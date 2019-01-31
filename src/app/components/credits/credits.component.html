@@ -1,11 +1,22 @@
-<p>
-  credits works!
-</p>
+<form [formGroup]="myForm">
 
-<label>
-  <select>
-    <option *ngFor="let element of listCredit;">
+  <select (change)="changeAction(value)" #value [formControl]="myForm.controls['typeCredits']">
+    <option *ngFor="let element of listCredits;">
       {{element.description.title | uppercase}}
     </option>
   </select>
-</label>
+
+  <input type="number" value="{{userDataAmount}}" [formControl]="myForm.controls['creditAmount']">
+  <div *ngIf="myForm.controls['creditAmount'].invalid && myForm.controls['creditAmount'].dirty">
+    <!--<div *ngIf="myForm.controls['creditAmount'].errors.min">-->
+      <!--<p>Le {{userDataAmount}} doit est plus grand que {{userDataAmountMin}}</p>-->
+    <!--</div>-->
+    <!--<div *ngIf="myForm.controls['creditAmount'].errors.max">-->
+      <!--<p>Le montant doit être plus petit que {{userDataAmountMax}}</p>-->
+    <!--</div>-->
+    <div>
+      toto
+    </div>
+  </div>
+
+</form>

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CreditsComponent } from './components/credits/credits.component';
 import { AppRoutingModule } from './app-routing/app-routing/app-routing.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
