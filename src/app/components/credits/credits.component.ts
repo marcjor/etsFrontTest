@@ -75,13 +75,18 @@ export class CreditsComponent implements OnInit, OnChanges {
     });
   }
 
-
   changeAction(select) {
     const i: number = select.selectedIndex;
     const typeCredits: TypeCredits = this.listCredits[i];
     this.userDataAmount = typeCredits.credit.amount_default;
     this.userDataAmountMin = typeCredits.credit.amount_min;
     this.userDataAmountMax = typeCredits.credit.amount_max;
+    console.clear();
+    console.log(this.listCredits);
+    console.log('MIN amount: ' + this.userDataAmountMin + ' for ' + typeCredits.description.title);
+    console.log('MAX amount: ' + this.userDataAmountMax + ' for ' + typeCredits.description.title);
+
+    this.myForm.get('creditAmount').setValue(this.userDataAmount);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -91,9 +96,7 @@ export class CreditsComponent implements OnInit, OnChanges {
 
 export function Validate(obj: CreditsComponent): ValidatorFn {
   return function ValidateUserAmount(control: AbstractControl) {
-    console.log(obj.userDataAmountMin);
-    console.log(obj.userDataAmountMax);
-  if (control.value >= obj.userDataAmountMin && control.value <= obj.userDataAmountMax) {
+  if (control.value < obj.userDataAmountMin || control.value > obj.userDataAmountMax) {
     return {validAmount: true};
   }
   return null;
