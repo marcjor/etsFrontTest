@@ -1,22 +1,40 @@
-<form [formGroup]="myForm">
+<div class="ctn-grid">
 
-  <select (change)="changeAction(value)" #value [formControl]="myForm.controls['typeCredits']">
-    <option *ngFor="let element of listCredits;">
-      {{element.description.title | uppercase}}
-    </option>
-  </select>
+  <form [formGroup]="myForm">
 
-  <input type="number" value="{{userDataAmount}}" [formControl]="myForm.controls['creditAmount']">
-  <div *ngIf="myForm.controls['creditAmount'].invalid && myForm.controls['creditAmount'].dirty">
-    <!--<div *ngIf="myForm.controls['creditAmount'].errors.min">-->
-      <!--<p>Le {{userDataAmount}} doit est plus grand que {{userDataAmountMin}}</p>-->
-    <!--</div>-->
-    <!--<div *ngIf="myForm.controls['creditAmount'].errors.max">-->
-      <!--<p>Le montant doit être plus petit que {{userDataAmountMax}}</p>-->
-    <!--</div>-->
-    <div>
-      Valeur trop petite ou trop grande.
+  <div>
+      <label>Type de prêt</label>
+      <select (change)="changeAction(value)" #value [formControl]="myForm.controls['typeCredits']">
+        <option *ngFor="let element of listCredits;">
+          {{element.description.title | uppercase}}
+        </option>
+      </select>
+  </div>
+
+  <div>
+    <label>Montant</label>
+    <input type="number" value="{{userDataAmount}}" (change)="changeAmount()" [formControl]="myForm.controls['creditAmount']">
+    <div *ngIf="myForm.controls['creditAmount'].invalid && myForm.controls['creditAmount'].dirty">
+      <div>
+        Valeur trop petite ou trop grande.
+      </div>
     </div>
   </div>
 
-</form>
+  <div>
+    <label>Durée</label>
+    <input type="radio" name="duration" checked>
+    <label>{{rangeDurationDefault}} {{rangeDurationType}}</label>
+    <div *ngIf="myForm.controls['creditAmount'].valid === true">
+      <div *ngFor="let element of rangeDurationFromGoodInputNumber; index as i">
+        <input type="radio" name="duration" id="duration{{i}}">
+        <label for="duration{{i}}">{{element}} {{rangeDurationType}}</label>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+</div>
+
+

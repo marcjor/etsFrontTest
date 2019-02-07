@@ -1,6 +1,6 @@
 export interface Range {
-  rangeMin: number;
-  rangeMax: number;
-  rangeRate: number;
-  rangeDuration: number[];
+  range_min: number;
+  range_max: number;
+  range_rate: number;
+  range_duration: number[];
 }

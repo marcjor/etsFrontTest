@@ -1,0 +1,5 @@
+git pull depuis mon GitHub: https://github.com/marcjor/etsFrontTest
+Ouvrir un invite de commande (quel qu'il soit: CMD, Gitbash ou terminal d'IDE sont préférés)
+Se déplacer à la racine de "etsFrontTestAngular"
+Taper dans l'invite de commande "npm install" (sans guillemets) pour qu'Angular télécharge toutes les dépendances nécéssaires au fonctionnement de l'appli
+Pour lancer l'appli taper ensuite: "ng serve -o" (sans guillemets)
